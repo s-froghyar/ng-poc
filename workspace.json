@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "actvated-route-poc": "apps/actvated-route-poc",
+    "actvated-route-poc-e2e": "apps/actvated-route-poc-e2e"
+  }
+}

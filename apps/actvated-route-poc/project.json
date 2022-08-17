@@ -1,0 +1,93 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/actvated-route-poc/src",
+  "prefix": "somaf",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/actvated-route-poc",
+        "index": "apps/actvated-route-poc/src/index.html",
+        "main": "apps/actvated-route-poc/src/main.ts",
+        "polyfills": "apps/actvated-route-poc/src/polyfills.ts",
+        "tsConfig": "apps/actvated-route-poc/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/actvated-route-poc/src/favicon.ico",
+          "apps/actvated-route-poc/src/assets"
+        ],
+        "styles": ["apps/actvated-route-poc/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/actvated-route-poc/src/environments/environment.ts",
+              "with": "apps/actvated-route-poc/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "actvated-route-poc:build:production"
+        },
+        "development": {
+          "browserTarget": "actvated-route-poc:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "actvated-route-poc:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/actvated-route-poc/**/*.ts",
+          "apps/actvated-route-poc/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/actvated-route-poc"],
+      "options": {
+        "jestConfig": "apps/actvated-route-poc/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
